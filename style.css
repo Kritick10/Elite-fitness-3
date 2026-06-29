@@ -1,0 +1,50 @@
+body{
+  margin:0;
+  font-family:system-ui;
+  background:#0a0c10;
+  color:white;
+}
+
+/* LAYOUT */
+.sidebar{
+  width:240px;
+  height:100vh;
+  position:fixed;
+  background:#0f1117;
+  padding:20px;
+}
+
+.main{
+  margin-left:260px;
+  padding:30px;
+}
+
+/* CARDS */
+.card{
+  background:rgba(255,255,255,0.05);
+  border:1px solid rgba(255,255,255,0.08);
+  padding:15px;
+  border-radius:14px;
+  margin-bottom:10px;
+  transition:0.2s;
+}
+
+.card:hover{
+  transform:translateY(-5px);
+}
+
+/* GRID */
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:15px;
+}
+
+/* BUTTON */
+.btn{
+  background:linear-gradient(90deg,#00ff88,#00c3ff);
+  border:none;
+  padding:10px 14px;
+  border-radius:10px;
+  cursor:pointer;
+}
