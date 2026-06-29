@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="style.css">
+<title>Dashboard</title>
+</head>
+<body>
+
+<div class="sidebar">
+  <h2>ELITE CRM</h2>
+</div>
+
+<div class="main">
+
+  <h1>Dashboard</h1>
+
+  <div class="grid">
+    <div class="card"><h2 id="total">0</h2><p>Total Leads</p></div>
+    <div class="card"><h2 id="conv">0%</h2><p>Conversion</p></div>
+    <div class="card"><h2 id="new">0</h2><p>New Leads</p></div>
+  </div>
+
+  <h2>Leads</h2>
+  <div id="box"></div>
+
+</div>
+
+<script src="app.js"></script>
+
+<script>
+function load(){
+
+  let total = leads.length;
+  let converted = leads.filter(l=>l.status==="converted").length;
+
+  document.getElementById("total").innerText = total;
+  document.getElementById("conv").innerText =
+    total ? Math.round((converted/total)*100)+"%" : "0%";
+
+  document.getElementById("new").innerText =
+    leads.filter(l=>l.status==="new").length;
+
+  let box = document.getElementById("box");
+  box.innerHTML="";
+
+  leads.forEach((l,i)=>{
+
+    box.innerHTML += `
+      <div class="card">
+        <h3>${l.name}</h3>
+        <p>${l.phone}</p>
+        <p>Status: ${l.status}</p>
+
+        <button class="btn" onclick="updateStatus(${i},'contacted');load()">Contact</button>
+        <button class="btn" onclick="updateStatus(${i},'converted');load()">Convert</button>
+        <button onclick="deleteLead(${i});load()">Delete</button>
+      </div>
+    `;
+  });
+}
+
+load();
+</script>
+
+</body>
+</html>
